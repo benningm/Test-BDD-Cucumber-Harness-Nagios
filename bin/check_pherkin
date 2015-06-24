@@ -1,0 +1,11 @@
+#!/usr/bin/env perl
+
+# See App::pherkin for documentation
+use strict;
+use warnings;
+use App::pherkin;
+
+my $result = App::check_pherkin->new()->run( @ARGV );
+
+print $result->output;
+exit( $result->nagios_code );
