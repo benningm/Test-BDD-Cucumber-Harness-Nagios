@@ -12,7 +12,7 @@ sub find_cb {
 	my $file = $File::Find::name;
 	my $package;
 
-	if ($file !~ m/\.pm$/) {
+	if ($file !~ m/\.pm$/ || $file =~ /check_pherkin\.pm/) {
 		return;
 	}
 	$package = $file;

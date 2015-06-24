@@ -1,9 +1,35 @@
 #!/usr/bin/env perl
 
-# See App::pherkin for documentation
 use strict;
 use warnings;
 use App::pherkin;
+
+# ABSTRACT: nagios wrapper for pherkin (Test::BDD::Cucumber)
+# VERSION
+# PODNAME: check_pherkin
+
+=head1 Description
+
+check_pherkin is nagios command wrapper for pherkin.
+
+The program behaves like pherkin but the output is always Nagios
+and the return status is a nagios return code. (0=OK,1=WARN,2=CRITICAL)
+
+=head1 Special tags
+
+Scenarios tagged with @warn will be reported with WARN level in nagios.
+
+=head1 See also
+
+The pherkin / Test-BDD-Cucumber documentation:
+
+L<pherkin>, L<Test::BDD::Cucumber>
+
+A collection of generic step definitions for infrastructure tests:
+
+L<Test::BDD::Infrastructure>
+
+=cut
 
 my $result = App::check_pherkin->new()->run( @ARGV );
 
