@@ -2,11 +2,35 @@
 
 use strict;
 use warnings;
-use App::pherkin;
+use App::check_pherkin;
 
 # ABSTRACT: nagios wrapper for pherkin (Test::BDD::Cucumber)
 # VERSION
 # PODNAME: check_pherkin
+
+=head1 Synopsis
+
+Short output in case of success:
+
+  $ check_pherkin examples/
+  OK - all 5 scenarios passed
+  $ echo $?
+  0
+
+Or in case of failure:
+
+  $ check_pherkin examples/http.feature 
+  line 10: And the http response status code must be 302 failed
+    ok 1 - Starting to execute step: the http response status code must be 302
+    not ok 2 - the status code must be 302
+    #   Failed test 'the status code must be 302'
+    #   at lib/Test/BDD/Infrastructure/HTTP.pm line 125.
+    #          got: 500
+    #     expected: 302
+    1..2
+  CRITICAL - 1 (critical) / 0 (warn) out of 1 scenarios failed
+  $ echo $?
+  2
 
 =head1 Description
 
